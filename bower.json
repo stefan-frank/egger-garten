@@ -1,0 +1,22 @@
+{
+  "name": "egger-garten",
+  "homepage": "https://github.com/stefan-frank/egger-garten",
+  "authors": [
+    "Stefan <sfrank@bluewin.ch>"
+  ],
+  "description": "Homepage von Daniel Egger http://www.egger-gartenpflege.ch",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.2"
+  }
+}
