@@ -19,24 +19,35 @@ var gulp = require('gulp'),
     del = require('del');
 
 // Styles
+//gulp.task('styles', function() {
+//    return gulp.src('src/styles/*.css')
+//        .pipe(gulp.dest('dist/styles'))
+//        .pipe(rename({ suffix: '.min' }))
+//        .pipe(cssnano())
+//        .pipe(gulp.dest('dist/styles'))
+//        .pipe(notify({ message: 'Styles task complete' }));
+//});
 gulp.task('styles', function() {
-    return gulp.src('src/styles/*.css')
-        .pipe(gulp.dest('dist/styles'))
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(cssnano())
+    return gulp.src('src/styles/**/*')
         .pipe(gulp.dest('dist/styles'))
         .pipe(notify({ message: 'Styles task complete' }));
 });
 
 // Scripts
+//gulp.task('scripts', function() {
+//    return gulp.src('src/scripts/**/*.js')
+//        .pipe(jshint('.jshintrc'))
+//        .pipe(jshint.reporter('default'))
+//        .pipe(concat('main.js'))
+//        .pipe(gulp.dest('dist/scripts'))
+//        .pipe(rename({ suffix: '.min' }))
+//        .pipe(uglify())
+//        .pipe(gulp.dest('dist/scripts'))
+//        .pipe(notify({ message: 'Scripts task complete' }));
+//});
+// Scripts
 gulp.task('scripts', function() {
     return gulp.src('src/scripts/**/*.js')
-        .pipe(jshint('.jshintrc'))
-        .pipe(jshint.reporter('default'))
-        .pipe(concat('main.js'))
-        .pipe(gulp.dest('dist/scripts'))
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(uglify())
         .pipe(gulp.dest('dist/scripts'))
         .pipe(notify({ message: 'Scripts task complete' }));
 });
@@ -47,6 +58,13 @@ gulp.task('images', function() {
         .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
         .pipe(gulp.dest('dist/images'))
         .pipe(notify({ message: 'Images task complete' }));
+});
+
+// Html
+gulp.task('html', function () {
+    return gulp.src('src/*.html')
+        .pipe(gulp.dest('dist'))
+        .pipe(notify({message: 'Html task complete'}));
 });
 
 gulp.task('clean-dist-lib', function() {
@@ -64,12 +82,12 @@ gulp.task('dist-lib', ['clean-dist-lib'], function() {
 
 // Clean
 gulp.task('clean', function() {
-    return del(['dist/styles', 'dist/scripts', 'dist/images']);
+    return del(['dist/**/*']);
 });
 
 // Default task
 gulp.task('default', ['clean'], function() {
-    gulp.start('styles', 'scripts', 'images');
+    gulp.start('html', 'styles', 'scripts', 'images');
 });
 
 // Watch

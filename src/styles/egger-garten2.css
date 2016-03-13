@@ -56,10 +56,7 @@ body {
 }
 
 .bild {
-    background: url("../images/Egger_Gartenpflege_Bild.jpg") no-repeat center;
-    background-size: 100%;
-    width: 100%;
-    height: 100%;
+    border-radius: 15px;
 }
 
 .mission {
